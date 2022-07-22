@@ -10,7 +10,7 @@ If everything is fine, you should see your app running.
 
 PLEASE CHECK THE BELOW IMAGES
 
-<kbd>![home](https://user-images.githubusercontent.com/97753655/180473136-b19e09b3-ed4a-451b-b7ae-c5d6d5d096c6.png)</kbd>
+<kbd>![home](https://user-images.githubusercontent.com/97753655/180500529-ebdc651a-907c-4228-8694-b041046e1097.png)</kbd>
 
 <kbd>![payment_landing](https://user-images.githubusercontent.com/97753655/180473252-8287b4fc-b456-46eb-891a-e901cf7753b3.png)</kbd>
 
