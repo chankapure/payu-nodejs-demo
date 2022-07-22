@@ -1,9 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Nodejs - JavaScript - PAYU - Integration - Checkout</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <style type="text/css">
     .main {
@@ -19,16 +30,253 @@
     }
   </style>
   <body>
-    <div class="main">
-      <div>
-        <img src="/images/logo.png" />
-      </div>
-      <div>
-        <h3>PAYU : <%= mode %></h3>
-      </div>
+    <div class="main registration-form">
       <!--// Form with required parameters to be posted to Payment Gateway. For details of each required 
 			parameters refer Integration PDF. //-->
       <form action="<%= checkoutUrl %>" id="payment_form" method="Post">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-icon">
+              <h3>PAYU NODEJS INTEGRATION <%= mode %></h3>
+              <span><img src="/images/logo.png" /></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="dv">
+              <span class="text"><label>Order ID:</label></span>
+              <div class="form-group">
+                <!-- Required - Unique transaction id or order id to identify and match 
+            payment with local invoicing. Datatype is Varchar with a limit of 25 char. //-->
+                <input
+                  type="text"
+                  id="txnid"
+                  name="txnid"
+                  placeholder="Transaction ID"
+                  value="<%= orderid %>"
+                  class="form-control item"
+                  readonly
+                />
+              </div>
+            </div>
+
+            <div class="dv">
+              <span class="text"><label>Amount:</label></span>
+              <div class="form-group">
+                <!-- Required - Transaction amount of float type. //-->
+                <input
+                  type="text"
+                  id="amount"
+                  name="amount"
+                  placeholder="Amount"
+                  value="6.00"
+                  class="form-control item"
+                />
+              </div>
+            </div>
+
+            <div class="dv">
+              <span class="text"><label>Product Info:</label></span>
+              <div class="form-group">
+                <!-- Required - Purchased product/item description or SKUs for future reference. 
+            Datatype is Varchar with 100 char limit. //-->
+                <input
+                  type="text"
+                  id="productinfo"
+                  name="productinfo"
+                  placeholder="Product Info"
+                  value="P01,P02"
+                  class="form-control item"
+                />
+              </div>
+            </div>
+
+            <div class="dv">
+              <span class="text"><label>First Name:</label></span>
+              <div class="form-group">
+                <!-- Required - Should contain first name of the consumer. Datatype is Varchar with 60 char limit. //-->
+                <input
+                  type="text"
+                  id="firstname"
+                  name="firstname"
+                  placeholder="First Name"
+                  value=""
+                  class="form-control item"
+                />
+              </div>
+            </div>
+
+            <div class="dv">
+              <span class="text"><label>Last Name:</label></span>
+              <div class="form-group">
+                <!-- Should contain last name of the consumer. Datatype is Varchar with 50 char limit. //-->
+                <input
+                  type="text"
+                  id="Lastname"
+                  name="Lastname"
+                  placeholder="Last Name"
+                  value=""
+                  class="form-control item"
+                />
+              </div>
+            </div>
+
+            <div class="dv">
+              <span class="text"><label>Email ID:</label></span>
+              <div class="form-group">
+                <!-- Required - An email id in valid email format has to be posted. Datatype is Varchar with 50 char limit. //-->
+                <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  placeholder="Email ID"
+                  value=""
+                  class="form-control item"
+                />
+              </div>
+            </div>
+
+            <div class="dv">
+              <span class="text"><label>Mobile/Cell Number:</label></span>
+              <div class="form-group">
+                <!-- Required - Datatype is Varchar with 50 char limit and must contain chars 0 to 9 only. 
+            This parameter may be used for land line or mobile number as per requirement of the application. //-->
+                <input
+                  type="text"
+                  id="phone"
+                  name="phone"
+                  placeholder="Mobile/Cell Number"
+                  value=""
+                  class="form-control item"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="dv">
+              <span class="text"><label>Address1:</label></span>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="address1"
+                  name="address1"
+                  placeholder="Address1"
+                  value=""
+                  class="form-control item"
+                />
+              </div>
+            </div>
+
+            <div class="dv">
+              <span class="text"><label>Address2:</label></span>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="address2"
+                  name="address2"
+                  placeholder="Address2"
+                  value=""
+                  class="form-control item"
+                />
+              </div>
+            </div>
+
+            <div class="dv">
+              <span class="text"><label>City:</label></span>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  placeholder="City"
+                  value=""
+                  class="form-control item"
+                />
+              </div>
+            </div>
+
+            <div class="dv">
+              <span class="text"><label>State:</label></span>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="state"
+                  name="state"
+                  placeholder="State"
+                  value=""
+                  class="form-control item"
+                />
+              </div>
+            </div>
+
+            <div class="dv">
+              <span class="text"><label>Country:</label></span>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="country"
+                  name="country"
+                  placeholder="Country"
+                  value=""
+                  class="form-control item"
+                />
+              </div>
+            </div>
+
+            <div class="dv">
+              <span class="text"><label>Zip Code:</label></span>
+              <div class="form-group">
+                <!-- Datatype is Varchar with 20 char limit only 0-9. //-->
+                <input
+                  type="text"
+                  id="Zipcode"
+                  name="Zipcode"
+                  placeholder="Zip Code"
+                  value=""
+                  class="form-control item"
+                />
+              </div>
+            </div>
+
+            <div class="dv">
+              <!-- <span class="text"><label>PG:</label></span> -->
+              <div class="form-group">
+                <!-- Not mandatory but fixed code can be passed to Payment Gateway to show default payment 
+            option tab. e.g. NB, CC, DC, CASH, EMI. Refer PDF for more details. //-->
+                <!-- <input type="text" id="Pg" name="Pg" placeholder="PG" value="CC" class="form-control item"/> -->
+              </div>
+            </div>
+
+            <div class="dv">
+              <span class="text"><label>Hash:</label></span>
+              <div class="form-group">
+                <!-- Required - Hash signature generated based on mandatory 
+            parameter values. Refer kit's code for more details. //-->
+                <input
+                  type="text"
+                  id="hash"
+                  name="hash"
+                  placeholder="Hash"
+                  value=""
+                  class="form-control item"
+                  readonly
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <input
+                type="submit"
+                class="btn btn-block create-account"
+                value="Proceed for Payment"
+              />
+            </div>
+          </div>
+        </div>
         <!-- Contains information of integration type. Consult to PayU for more details.//-->
         <input type="hidden" id="udf5" name="udf5" value="Donation Request" />
 
@@ -57,204 +305,14 @@ Note: pg = CC, that is, Credit Card tab is recommended. If pg is left empty, CC 
         <input type="hidden" id="furl" name="furl" value="<%= furl %>" />
         <input type="hidden" id="curl" name="curl" value="<%= curl %>" />
         <input type="hidden" id="key" name="key" value="<%= key %>" />
-
-        <div class="dv">
-          <span class="text"><label>Transaction/Order ID:</label></span>
-          <span>
-            <!-- Required - Unique transaction id or order id to identify and match 
-				payment with local invoicing. Datatype is Varchar with a limit of 25 char. //-->
-            <input
-              type="text"
-              id="txnid"
-              name="txnid"
-              placeholder="Transaction ID"
-              value="<%= orderid %>"
-          /></span>
-        </div>
-
-        <div class="dv">
-          <span class="text"><label>Amount:</label></span>
-          <span>
-            <!-- Required - Transaction amount of float type. //-->
-            <input
-              type="text"
-              id="amount"
-              name="amount"
-              placeholder="Amount"
-              value="6.00"
-          /></span>
-        </div>
-
-        <div class="dv">
-          <span class="text"><label>Product Info:</label></span>
-          <span>
-            <!-- Required - Purchased product/item description or SKUs for future reference. 
-				Datatype is Varchar with 100 char limit. //-->
-            <input
-              type="text"
-              id="productinfo"
-              name="productinfo"
-              placeholder="Product Info"
-              value="P01,P02"
-          /></span>
-        </div>
-
-        <div class="dv">
-          <span class="text"><label>First Name:</label></span>
-          <span>
-            <!-- Required - Should contain first name of the consumer. Datatype is Varchar with 60 char limit. //-->
-            <input
-              type="text"
-              id="firstname"
-              name="firstname"
-              placeholder="First Name"
-              value=""
-          /></span>
-        </div>
-
-        <div class="dv">
-          <span class="text"><label>Last Name:</label></span>
-          <span>
-            <!-- Should contain last name of the consumer. Datatype is Varchar with 50 char limit. //-->
-            <input
-              type="text"
-              id="Lastname"
-              name="Lastname"
-              placeholder="Last Name"
-              value=""
-          /></span>
-        </div>
-
-        <div class="dv">
-          <span class="text"><label>Email ID:</label></span>
-          <span>
-            <!-- Required - An email id in valid email format has to be posted. Datatype is Varchar with 50 char limit. //-->
-            <input
-              type="text"
-              id="email"
-              name="email"
-              placeholder="Email ID"
-              value=""
-          /></span>
-        </div>
-
-        <div class="dv">
-          <span class="text"><label>Mobile/Cell Number:</label></span>
-          <span>
-            <!-- Required - Datatype is Varchar with 50 char limit and must contain chars 0 to 9 only. 
-				This parameter may be used for land line or mobile number as per requirement of the application. //-->
-            <input
-              type="text"
-              id="phone"
-              name="phone"
-              placeholder="Mobile/Cell Number"
-              value=""
-          /></span>
-        </div>
-
-        <div class="dv">
-          <span class="text"><label>Address1:</label></span>
-          <span
-            ><input
-              type="text"
-              id="address1"
-              name="address1"
-              placeholder="Address1"
-              value=""
-          /></span>
-        </div>
-
-        <div class="dv">
-          <span class="text"><label>Address2:</label></span>
-          <span
-            ><input
-              type="text"
-              id="address2"
-              name="address2"
-              placeholder="Address2"
-              value=""
-          /></span>
-        </div>
-
-        <div class="dv">
-          <span class="text"><label>City:</label></span>
-          <span
-            ><input
-              type="text"
-              id="city"
-              name="city"
-              placeholder="City"
-              value=""
-          /></span>
-        </div>
-
-        <div class="dv">
-          <span class="text"><label>State:</label></span>
-          <span
-            ><input
-              type="text"
-              id="state"
-              name="state"
-              placeholder="State"
-              value=""
-          /></span>
-        </div>
-
-        <div class="dv">
-          <span class="text"><label>Country:</label></span>
-          <span
-            ><input
-              type="text"
-              id="country"
-              name="country"
-              placeholder="Country"
-              value=""
-          /></span>
-        </div>
-
-        <div class="dv">
-          <span class="text"><label>Zip Code:</label></span>
-          <span>
-            <!-- Datatype is Varchar with 20 char limit only 0-9. //-->
-            <input
-              type="text"
-              id="Zipcode"
-              name="Zipcode"
-              placeholder="Zip Code"
-              value=""
-          /></span>
-        </div>
-
-        <div class="dv">
-          <!-- <span class="text"><label>PG:</label></span> -->
-          <span>
-            <!-- Not mandatory but fixed code can be passed to Payment Gateway to show default payment 
-				option tab. e.g. NB, CC, DC, CASH, EMI. Refer PDF for more details. //-->
-            <!-- <input type="text" id="Pg" name="Pg" placeholder="PG" value="CC"/> -->
-          </span>
-        </div>
-
-        <div class="dv">
-          <span class="text"><label>Hash:</label></span>
-          <span>
-            <!-- Required - Hash signature generated based on mandatory 
-				parameter values. Refer kit's code for more details. //-->
-            <input
-              type="text"
-              id="hash"
-              name="hash"
-              placeholder="Hash"
-              value=""
-              readonly
-          /></span>
-        </div>
-        <div id="alertinfo" class="dv"></div>
-
-        <div><input type="submit" value="Pay" /></div>
       </form>
     </div>
     <!-- Below script is just for using Hash calculation routine. In live integrations different workflows may be used
 	to access Hash calculation routine. //-->
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+    ></script>
     <script type="text/javascript">
       $("#payment_form").bind("keyup blur", function () {
         $.ajax({
