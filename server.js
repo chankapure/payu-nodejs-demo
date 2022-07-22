@@ -11,7 +11,9 @@ POST URL: https://secure.payu.in/_payment
 */
 var express = require("express");
 var session = require("cookie-session");
+var cors = require("cors");
 var app = express();
+app.use(cors());
 var bodyParser = require("body-parser");
 var path = require("path");
 var crypto = require("crypto");
