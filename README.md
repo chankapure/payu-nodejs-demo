@@ -10,9 +10,9 @@ If everything is fine, you should see your app running.
 
 PLEASE CHECK THE BELOW IMAGES
 
-<kbd>![home](https://user-images.githubusercontent.com/97753655/180473136-b19e09b3-ed4a-451b-b7ae-c5d6d5d096c6.png)</kbd><br/><br/>  
+<kbd>![home](https://user-images.githubusercontent.com/97753655/180473136-b19e09b3-ed4a-451b-b7ae-c5d6d5d096c6.png)</kbd>
 
-<kbd>![payment_landing](https://user-images.githubusercontent.com/97753655/180473252-8287b4fc-b456-46eb-891a-e901cf7753b3.png)</kbd><br/>
+<kbd>![payment_landing](https://user-images.githubusercontent.com/97753655/180473252-8287b4fc-b456-46eb-891a-e901cf7753b3.png)</kbd>
 
 <kbd>![netbanking](https://user-images.githubusercontent.com/97753655/180473394-6465eef4-08fd-484f-a78f-4948fc18f448.png)</kbd>
 
